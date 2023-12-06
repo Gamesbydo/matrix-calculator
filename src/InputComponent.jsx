@@ -6,7 +6,7 @@ function InputComponent({ onInputChange }) {
     const [input, setInput] = useState("");
 
     const handleInputChangeInternal = (e) => {
-        const value = e.target.value.replace(/[^0-9]/g, "");
+        const value = e.target.value.replace(/[^-0-9/]/g, "");
         setInput(value);
         onInputChange(value);
     };

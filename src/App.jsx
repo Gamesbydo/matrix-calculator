@@ -43,7 +43,16 @@ function App() {
     };
     const handleInputChange = (index, value) => {
         const newMatrixInputs = [...matrixInputs];
-        newMatrixInputs[index] = value;
+        if (value === "" || !value.includes("/")) setResult("0");
+        if (value.includes("/")) {
+            let temp = value.split("/");
+            if (+temp[1] === 0) setResult("Can't divide by zero.");
+            else {
+                value = +temp[0] / +temp[1];
+                setResult("");
+            }
+        }
+        newMatrixInputs[index] = value.toString();
         setMatrixInputs(newMatrixInputs);
     };
 
